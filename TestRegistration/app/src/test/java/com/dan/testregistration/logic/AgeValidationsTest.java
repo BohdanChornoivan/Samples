@@ -7,11 +7,13 @@ import static org.junit.Assert.*;
 
 public class AgeValidationsTest {
 
+    AgeValidations ageValidations = new AgeValidations();
+
     @Before
     public void setUp() throws Exception {
     }
 
-    @Test
+    @Test(expected = AgeValidations.LengthException.class)
     public void ageInvalidation() {
     }
 }

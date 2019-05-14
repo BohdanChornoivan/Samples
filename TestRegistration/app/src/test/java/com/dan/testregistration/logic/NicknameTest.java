@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 public class NicknameTest {
 
+    Nickname nickname = new Nickname();
+
     @Before
     public void setUp() throws Exception {
     }

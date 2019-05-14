@@ -15,13 +15,13 @@ public class AuthLogic {
         this.password = password;
     }
 
-    User singIn(Personality personality) throws PasswordValidations.ValidationExceptionPass, EmailValidations.ValidationExceptionEmail {
+    User signIn(Personality personality) throws PasswordValidations.ValidationExceptionPass, EmailValidations.ValidationExceptionEmail {
         email.emailInvalidation(personality.getEmail());
         password.passwordInvalidation(personality.getPassword());
-        return personality.singIn(personality);
+        return personality.signIn(personality);
     }
 
-    User singUp(Personality personality, String nickname, int age) {
+    User signUp(Personality personality, String nickname, int age) {
         return null;
     }
 }

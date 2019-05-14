@@ -21,7 +21,7 @@ public class Personality {
         this.password = password;
     }
 
-    public User singIn(Personality personality) {
+    public User signIn(Personality personality) {
         return null;
     }
 }

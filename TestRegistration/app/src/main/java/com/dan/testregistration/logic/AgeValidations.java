@@ -15,4 +15,5 @@ public class AgeValidations {
     }
 
     class ValidationExceptionAge extends RuntimeException{}
+    class LengthException extends Exception{}
 }
