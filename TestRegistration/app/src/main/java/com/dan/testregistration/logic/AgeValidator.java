@@ -3,7 +3,7 @@ package com.dan.testregistration.logic;
 import android.app.admin.SystemUpdatePolicy;
 import android.text.TextUtils;
 
-public class AgeValidations {
+public class AgeValidator {
 
     private static final int MIN_AGE_LENGTH = 15;
     private static final int MAX_AGE_LENGTH = 200;
@@ -15,4 +15,5 @@ public class AgeValidations {
     }
 
     class ValidationExceptionAge extends RuntimeException{}
+    class LengthException extends Exception{}
 }

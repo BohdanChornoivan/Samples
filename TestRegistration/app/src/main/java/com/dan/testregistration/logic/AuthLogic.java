@@ -6,22 +6,22 @@ import com.dan.testregistration.info.User;
 public class AuthLogic {
 
     AuthUser authUser;
-    EmailValidations email;
-    PasswordValidations password;
+    EmailValidator email;
+    PasswordValidator password;
 
-    public AuthLogic(AuthUser authUser, EmailValidations email, PasswordValidations password) {
+    public AuthLogic(AuthUser authUser, EmailValidator email, PasswordValidator password) {
         this.authUser = authUser;
         this.email = email;
         this.password = password;
     }
 
-    User singIn(Personality personality) throws PasswordValidations.ValidationExceptionPass, EmailValidations.ValidationExceptionEmail {
-        email.emailInvalidation(personality.getEmail());
+    User signIn(Personality personality) throws PasswordValidator.ValidationExceptionPass, EmailValidator.EmailException {
+        email.validate(personality.getEmail());
         password.passwordInvalidation(personality.getPassword());
-        return personality.singIn(personality);
+        return personality.signIn(personality);
     }
 
-    User singUp(Personality personality, String nickname, int age) {
+    User signUp(Personality personality, String nickname, int age) {
         return null;
     }
 }
