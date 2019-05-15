@@ -10,9 +10,9 @@ import org.junit.runners.JUnit4;
 import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
-public class PasswordValidationsTest {
+public class PasswordValidatorTest {
 
-    PasswordValidations passwordValidations = new PasswordValidations();
+    PasswordValidator passwordValidator = new PasswordValidator();
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -25,8 +25,8 @@ public class PasswordValidationsTest {
     public void passwordInvalidation() {
     }
 
-    @Test(expected = PasswordValidations.LengthException.class)
+    @Test(expected = PasswordValidator.LengthException.class)
     public void validate_null_password() {
-        assertTrue(passwordValidations.passwordInvalidation(null));
+        assertTrue(passwordValidator.passwordInvalidation(null));
     }
 }

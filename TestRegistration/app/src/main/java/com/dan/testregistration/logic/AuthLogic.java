@@ -7,15 +7,15 @@ public class AuthLogic {
 
     AuthUser authUser;
     EmailValidator email;
-    PasswordValidations password;
+    PasswordValidator password;
 
-    public AuthLogic(AuthUser authUser, EmailValidator email, PasswordValidations password) {
+    public AuthLogic(AuthUser authUser, EmailValidator email, PasswordValidator password) {
         this.authUser = authUser;
         this.email = email;
         this.password = password;
     }
 
-    User signIn(Personality personality) throws PasswordValidations.ValidationExceptionPass, EmailValidator.EmailException {
+    User signIn(Personality personality) throws PasswordValidator.ValidationExceptionPass, EmailValidator.EmailException {
         email.validate(personality.getEmail());
         password.passwordInvalidation(personality.getPassword());
         return personality.signIn(personality);

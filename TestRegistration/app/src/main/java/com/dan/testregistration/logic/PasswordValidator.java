@@ -3,7 +3,7 @@ package com.dan.testregistration.logic;
 import android.app.admin.SystemUpdatePolicy;
 import android.text.TextUtils;
 
-public class PasswordValidations {
+public class PasswordValidator {
 
     private static final int MIN_PASS_LENGTH = 6;
     private static final int MAX_PASS_LENGTH = 16;

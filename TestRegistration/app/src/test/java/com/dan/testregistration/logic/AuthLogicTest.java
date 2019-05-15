@@ -27,7 +27,7 @@ public class AuthLogicTest {
     AuthUser authUser;
 
     @Mock
-    PasswordValidations validations;
+    PasswordValidator validations;
 
     @InjectMocks
     AuthLogic authLogic;
