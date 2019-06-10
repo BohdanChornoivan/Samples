@@ -1,3 +1,2 @@
-Program 
-works 
-good
+(S)(TRING|tring)
+Sting Two
