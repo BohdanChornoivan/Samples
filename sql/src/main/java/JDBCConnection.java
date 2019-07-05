@@ -31,7 +31,7 @@ public class JDBCConnection {
                 statement.executeUpdate("insert  into  Books (name) values ('Inferno');");
                 statement.executeUpdate("insert  into  Books (name) values ('Solomon key');");
 
-                ResultSet resultSet = statement.executeQuery("select  * from Books;");
+                ResultSet resultSet = statement.executeQuery("select * from Books;");
 
                 while (resultSet.next()) {
                     System.out.println(resultSet.getInt(1));
