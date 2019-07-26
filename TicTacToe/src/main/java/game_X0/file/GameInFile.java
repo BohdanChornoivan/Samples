@@ -1,24 +1,45 @@
 package game_X0.file;
 
+import game_X0.realization.RealizationGame;
+
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class GameInFile {
 
-    public GameInFile createFile(String text) throws IOException {
+    public void createFileInCVS(RealizationGame game) throws IOException {
+        try (PrintWriter writer = new PrintWriter(new File("CSVGameFile.cvs"))) {
 
-        File file = new File("GameFile.txt");
+            StringBuilder sb = new StringBuilder();
+//            String[] header = { "ID", "Name", "Address", "Phone Number" };
+//            sb.append(header);
+            sb.append("player");
+            sb.append(',');
+            sb.append("x");
+            sb.append(',');
+            sb.append("y");
+            sb.append('\n');
 
-        if (file.createNewFile()) {
-            System.out.println("File is created!");
-        } else {
-            System.out.println("File already exists.");
+            sb.append(game.getNamePlayer1());
+            sb.append(',');
+            sb.append(game.getBoard_X0()[0][1]);
+            sb.append(',');
+            sb.append(game.getBoard_X0().length);
+            sb.append('\n');
+
+            sb.append(game.getNamePlayer2());
+            sb.append(',');
+            sb.append(game.getBoard_X0()[0][1]);
+            sb.append(',');
+            sb.append(game.getBoard_X0().length);
+            sb.append('\n');
+
+            writer.write(sb.toString());
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
-
-        FileWriter writer = new FileWriter(file);
-        writer.write(text);
-        writer.close();
-        return null;
     }
 }
