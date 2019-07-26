@@ -9,6 +9,10 @@ public class RealizationGame {
 
     private String[][] board_X0;
 
+    private String namePlayer1;
+
+    private String namePlayer2;
+
     private String winner;
 
     public String[][] getBoard_X0() {
@@ -21,17 +25,30 @@ public class RealizationGame {
 
     public RealizationGame() {
 
-        this.board_X0 = new String[maxSizeBoard][maxSizeBoard];
+        board_X0 = new EmptyBoard().createBoard(maxSizeBoard);
 
-        for (int i = 0; i < board_X0.length; i++) {
-            for (int j = 0; j < board_X0[i].length; j++) {
-
-                board_X0[i][j] = MarksForBoard.EMPTY.getMark();
-            }
-        }
     }
 
     public void play(Player player1, Player player2) {
+
+        this.namePlayer1 = player1.getName();
+        this.namePlayer2 = player2.getName();
+
+        playersMove(player1, player2);
+
+    }
+
+    private void printBoard() {
+        System.out.println("---------");
+        for (int i = 0; i < board_X0.length; i++) {
+            for (int j = 0; j < board_X0[i].length; j++) {
+                System.out.print(board_X0[i][j] + "\t");
+            }
+            System.out.println(MarksForBoard.EMPTY.getMark());
+        }
+    }
+
+    private void playersMove(Player player1, Player player2) {
 
         while (true) {
 
@@ -44,6 +61,8 @@ public class RealizationGame {
                 continue;
             }
 
+            printBoard();
+
             if (checkIfWin(player1, player2)) {
                 whoWin();
                 return;
@@ -52,6 +71,8 @@ public class RealizationGame {
             while (!movePlayer(player2)) {
                 continue;
             }
+
+            printBoard();
         }
     }
 
@@ -63,15 +84,6 @@ public class RealizationGame {
         return false;
     }
 
-
-    public void printBoard() {
-         for (int i = 0; i < board_X0.length; i++) {
-            for (int j = 0; j < board_X0[i].length; j++) {
-                System.out.print(board_X0[i][j] + "\t");
-            }
-             System.out.println(MarksForBoard.EMPTY.getMark());
-        }
-    }
 
     private boolean checkIfWin(Player player1, Player player2) {
 
@@ -99,7 +111,7 @@ public class RealizationGame {
         }
     }
 
-    public void whoWin() {
+    private void whoWin() {
 
         if(!(winner == null)) {
             System.out.println("Winner = " + winner);
@@ -144,5 +156,13 @@ public class RealizationGame {
             return true;
         } else
             return false;
+    }
+
+    public String getNamePlayer1() {
+        return namePlayer1;
+    }
+
+    public String getNamePlayer2() {
+        return namePlayer2;
     }
 }

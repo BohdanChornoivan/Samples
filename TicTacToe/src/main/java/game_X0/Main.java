@@ -15,16 +15,14 @@ public class Main {
 
         Player playerB1 = new Player("B1-X", MarksForBoard.MARK_X.getMark());
 
-        Player playerB2 = new Player("B2-Y", MarksForBoard.MARK_Y.getMark());
+        Player playerB2 = new Player("B2-0", MarksForBoard.MARK_0.getMark());
 
         realizationGame.play(playerB1, playerB2);
-
-        realizationGame.printBoard();
 
 
         try {
             GameInFile gameInFile = new GameInFile();
-            gameInFile.createFile(realizationGame.getWinner());
+            gameInFile.createFileInCVS(realizationGame);
         } catch (IOException e) {
             e.printStackTrace();
         }

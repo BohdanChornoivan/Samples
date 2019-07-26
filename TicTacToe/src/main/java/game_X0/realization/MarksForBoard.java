@@ -3,7 +3,7 @@ package game_X0.realization;
 public enum MarksForBoard {
 
     MARK_X("X"),
-    MARK_Y("Y"),
+    MARK_0("0"),
     EMPTY(" ")
     ;
 
