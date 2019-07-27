@@ -1,4 +1,4 @@
-package game_X0.realization;
+package game.realization;
 
 public enum MarksForBoard {
 

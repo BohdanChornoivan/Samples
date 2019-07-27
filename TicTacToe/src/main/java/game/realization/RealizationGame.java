@@ -1,7 +1,10 @@
-package game_X0.realization;
+package game.realization;
 
 
-import game_X0.gamer.Player;
+import game.gamer.Player;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class RealizationGame {
 
@@ -15,17 +18,18 @@ public class RealizationGame {
 
     private String winner;
 
-    public String[][] getBoard_X0() {
-        return board_X0;
-    }
+    private ArrayList<String> saveMoves;
 
-    public String getWinner() {
-        return winner;
-    }
+    private GameControl control = new GameControl();
+
 
     public RealizationGame() {
 
         board_X0 = new EmptyBoard().createBoard(maxSizeBoard);
+
+        saveMoves = new ArrayList<>();
+
+
 
     }
 
@@ -46,6 +50,7 @@ public class RealizationGame {
             }
             System.out.println(MarksForBoard.EMPTY.getMark());
         }
+        System.out.println("---------");
     }
 
     private void playersMove(Player player1, Player player2) {
@@ -58,6 +63,7 @@ public class RealizationGame {
             }
 
             while (!movePlayer(player1)) {
+                System.out.println("String is busy");
                 continue;
             }
 
@@ -69,6 +75,7 @@ public class RealizationGame {
             }
 
             while (!movePlayer(player2)) {
+                System.out.println("String is busy");
                 continue;
             }
 
@@ -76,7 +83,7 @@ public class RealizationGame {
         }
     }
 
-    private boolean checkStroke(int row, int column) {
+    private boolean checkEmptyStroke(int row, int column) {
 
         if (board_X0[row][column].equals(MarksForBoard.EMPTY.getMark())) {
             return true;
@@ -147,15 +154,32 @@ public class RealizationGame {
 
     private boolean movePlayer(Player player) {
 
-        int move1 = player.randomNumberOnTheBoard(board_X0);
 
-        int move2 = player.randomNumberOnTheBoard(board_X0);
+        int writeRow = control.enterRow(player);
 
-        if (checkStroke(move1, move2)) {
-            board_X0[move1][move2] = String.valueOf(player.getMark());
+        int writeColumn = control.enterColumn(player);
+
+        if (writeRow >= board_X0.length || writeColumn >= board_X0.length) {
+            System.out.println("You have entered a large value");
+            return false;
+        } else if (checkEmptyStroke(writeRow, writeColumn)) {
+            board_X0[writeRow][writeColumn] = player.getMark();
+            saveMoves.add(player.getName() + " = " + writeRow + ", " + writeColumn);
             return true;
         } else
             return false;
+    }
+
+    public String[][] getBoard_X0() {
+        return board_X0;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public ArrayList<String> getSaveMoves() {
+        return saveMoves;
     }
 
     public String getNamePlayer1() {

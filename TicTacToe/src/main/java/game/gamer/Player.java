@@ -1,4 +1,4 @@
-package game_X0.gamer;
+package game.gamer;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class Player {
 
     private String mark;
 
-    Random random;
+    private Random random;
 
     public Player(String name, String mark) {
         this.name = name;
