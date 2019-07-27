@@ -4,11 +4,10 @@ package game.realization;
 import game.gamer.Player;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class RealizationGame {
 
-    private static final int maxSizeBoard = 3;
+    private static final int MAX_SIZE_BOARD = 3;
 
     private String[][] board_X0;
 
@@ -25,7 +24,7 @@ public class RealizationGame {
 
     public RealizationGame() {
 
-        board_X0 = new EmptyBoard().createBoard(maxSizeBoard);
+        board_X0 = new EmptyBoard().createBoard(MAX_SIZE_BOARD);
 
         saveMoves = new ArrayList<>();
 
@@ -129,22 +128,26 @@ public class RealizationGame {
     private boolean checkBoard(Player player) {
 
         for (int i = 0; i < board_X0.length; i++) {
-            if (board_X0[0][i].equals(player.getMark()) && board_X0[1][i].equals(player.getMark()) && board_X0[2][i].equals(player.getMark())) {
+            if (board_X0[0][i].equals(player.getMark()) && board_X0[1][i].equals(player.getMark())
+                    && board_X0[2][i].equals(player.getMark())) {
                 winner = player.getName();
                 return true;
             }
-            if (board_X0[i][0].equals(player.getMark()) && board_X0[i][1].equals(player.getMark()) && board_X0[i][2].equals(player.getMark())) {
+            if (board_X0[i][0].equals(player.getMark()) && board_X0[i][1].equals(player.getMark())
+                    && board_X0[i][2].equals(player.getMark())) {
                 winner = player.getName();
                 return true;
             }
         }
 
-        if (board_X0[0][0].equals(player.getMark()) && board_X0[1][1].equals(player.getMark()) && board_X0[2][2].equals(player.getMark())) {
+        if (board_X0[0][0].equals(player.getMark()) && board_X0[1][1].equals(player.getMark())
+                && board_X0[2][2].equals(player.getMark())) {
             winner = player.getName();
             return true;
         }
 
-        if (board_X0[0][2].equals(player.getMark()) && board_X0[1][1].equals(player.getMark()) && board_X0[2][0].equals(player.getMark())) {
+        if (board_X0[0][2].equals(player.getMark()) && board_X0[1][1].equals(player.getMark())
+                && board_X0[2][0].equals(player.getMark())) {
             winner = player.getName();
             return true;
         }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "match", catalog = "hibernate_demo",  uniqueConstraints = {
+@Table(name = "game_match_hibernate", catalog = "tictactoe",  uniqueConstraints = {
         @UniqueConstraint(columnNames = "NAME"),
         @UniqueConstraint(columnNames = "VICTORY"),
         @UniqueConstraint(columnNames = "LOSS"),
@@ -39,7 +39,7 @@ public class Match {
         this.name = name;
     }
 
-    @Column(name = "VICTORY", length = 10)
+    @Column(name = "VICTORY", length = 11)
     public Integer getVictory() {
         return victory;
     }
@@ -48,7 +48,7 @@ public class Match {
         this.victory = victory;
     }
 
-    @Column(name = "LOSS", length = 10)
+    @Column(name = "LOSS", length = 11)
     public Integer getLoss() {
         return loss;
     }
@@ -57,7 +57,7 @@ public class Match {
         this.loss = loss;
     }
 
-    @Column(name = "DRAW", length = 10)
+    @Column(name = "DRAW", length = 11)
     public Integer getDraw() {
         return draw;
     }

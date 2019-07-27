@@ -28,7 +28,7 @@ public class MainHibernate {
 
         session.beginTransaction();
 
-        SaveGame saveGame = new SaveGame(playerB2.getName(), 2, 1, 4);
+        SaveGame saveGame = new SaveGame(playerB2.getName(), 2, 1, 5);
         session.save(saveGame.getMatch());
         session.getTransaction().commit();
 

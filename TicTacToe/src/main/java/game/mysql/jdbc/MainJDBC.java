@@ -30,16 +30,16 @@ public class MainJDBC {
 
                 Statement statement = connection.createStatement();
 
-                statement.executeUpdate("DROP TABLE IF EXISTS match1;");
+                statement.executeUpdate("DROP TABLE IF EXISTS game_match;");
 
 
-                statement.executeUpdate("CREATE TABLE match1 (Name VARCHAR(50), Victory INT(11) NOT NULL, Loss INT(11) NOT NULL, Draw INT(11) NOT NULL);");
+                statement.executeUpdate("CREATE TABLE game_match (Name VARCHAR(50), Victory INT(11) NOT NULL, Loss INT(11) NOT NULL, Draw INT(11) NOT NULL);");
 
 
-                statement.executeUpdate("insert into  match1 (Name, Victory, Loss, Draw) values ('" + playerB1.getName() + "', 1, 2, 3);");
-                statement.executeUpdate("insert into  match1 (Name, Victory, Loss, Draw) values ('" + playerB2.getName() + "', 2, 1, 3);");
+                statement.executeUpdate("insert into  game_match (Name, Victory, Loss, Draw) values ('" + playerB1.getName() + "', 1, 2, 3);");
+                statement.executeUpdate("insert into  game_match (Name, Victory, Loss, Draw) values ('" + playerB2.getName() + "', 2, 1, 3);");
 
-                ResultSet resultSet = statement.executeQuery("select * from match1;");
+                ResultSet resultSet = statement.executeQuery("select * from game_match;");
 
                 while (resultSet.next()) {
                     System.out.println(resultSet.getString(1));
