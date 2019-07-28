@@ -2,24 +2,31 @@ package game.mysql.jdbc;
 
 import game.gamer.Player;
 import game.mysql.jdbc.entity.CreateTable;
+import game.mysql.jdbc.entity.InsertData;
 import game.realization.MarksForBoard;
 import game.realization.RealizationGame;
 
 import java.sql.*;
 
 public class MainJDBC {
-    public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/tictactoe?serverTimezone=UTC&autoReconnect=true&useSSL=false";
-        String name = "root";
-        String password = "Boser11Boh.";
 
-        RealizationGame realizationGame = new RealizationGame();
+    private static final String url = "jdbc:mysql://localhost:3306/tictactoe?serverTimezone=UTC&autoReconnect=true&useSSL=false";
+    private static final String name = "root";
+    private static final String password = "Boser11Boh.";
+
+    public static void main(String[] args) {
+
 
         Player playerB1 = new Player("B1-X", MarksForBoard.MARK_X.getMark());
 
         Player playerB2 = new Player("B2-0", MarksForBoard.MARK_0.getMark());
 
-        realizationGame.play(playerB1, playerB2);
+        new RealizationGame().play(playerB1,playerB2);
+        new RealizationGame().play(playerB1,playerB2);
+        new RealizationGame().play(playerB1,playerB2);
+        new RealizationGame().play(playerB1,playerB2);
+        new RealizationGame().play(playerB1,playerB2);
+        new RealizationGame().play(playerB1,playerB2);
 
 
         try {
@@ -28,16 +35,11 @@ public class MainJDBC {
 
                 new CreateTable().create(connection);
 
+                new InsertData(playerB1).insert(connection);
+
+                new InsertData(playerB2).insert(connection);
+
                 Statement statement = connection.createStatement();
-
-                statement.executeUpdate("DROP TABLE IF EXISTS game_match;");
-
-
-                statement.executeUpdate("CREATE TABLE game_match (Name VARCHAR(50), Victory INT(11) NOT NULL, Loss INT(11) NOT NULL, Draw INT(11) NOT NULL);");
-
-
-                statement.executeUpdate("insert into  game_match (Name, Victory, Loss, Draw) values ('" + playerB1.getName() + "', 1, 2, 3);");
-                statement.executeUpdate("insert into  game_match (Name, Victory, Loss, Draw) values ('" + playerB2.getName() + "', 2, 1, 3);");
 
                 ResultSet resultSet = statement.executeQuery("select * from game_match;");
 
@@ -46,7 +48,6 @@ public class MainJDBC {
                 }
 
                 statement.close();
-
 
             } catch (SQLException e) {
                 e.printStackTrace();

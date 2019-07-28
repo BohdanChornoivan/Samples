@@ -29,7 +29,6 @@ public class RealizationGame {
         saveMoves = new ArrayList<>();
 
 
-
     }
 
     public void play(Player player1, Player player2) {
@@ -105,12 +104,18 @@ public class RealizationGame {
 
         if(checkBoard(player1)) {
             winner = player1.getName();
+            player1.win();
+            player2.loss();
             return true;
         } else if (checkBoard(player2)) {
             winner = player2.getName();
+            player2.win();
+            player1.loss();
             return true;
         } else if (checkFullBoard == 9) {
             winner = "Nobody won";
+            player1.draw();
+            player2.draw();
             return true;
         } else {
             return false;
@@ -158,9 +163,13 @@ public class RealizationGame {
     private boolean movePlayer(Player player) {
 
 
-        int writeRow = control.enterRow(player);
+        //int writeRow = control.enterRow(player);
 
-        int writeColumn = control.enterColumn(player);
+        //int writeColumn = control.enterColumn(player);
+
+        int writeRow = player.randomNumberOnTheBoard(board_X0);
+
+        int writeColumn = player.randomNumberOnTheBoard(board_X0);
 
         if (writeRow >= board_X0.length || writeColumn >= board_X0.length) {
             System.out.println("You have entered a large value");

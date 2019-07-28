@@ -1,24 +1,24 @@
 package game.mysql.jdbc.entity;
 
+import game.gamer.Player;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class InsertData {
 
-    private String name;
+    private Player player;
 
-    public InsertData(String name) {
-        this.name = name;
+    public InsertData(Player player) {
+        this.player = player;
     }
 
-    public final String insertPlayer = "insert into  match1 (Name, Victory, Loss, Draw) values ('" + name + "', 1, 2, 3);";
 
     public void insert(Connection connection) throws SQLException {
 
         Statement statement = connection.createStatement();
-        statement.execute(insertPlayer);
-
+        statement.executeUpdate("insert into  game_match (Name, Victory, Loss, Draw) values ('" + player.getName() + "', " + player.getWin() +  ", " + player.getLoss() + ", " + player.getDraw() + ");");
 
     }
 }

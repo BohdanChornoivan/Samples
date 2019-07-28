@@ -6,8 +6,9 @@ import java.sql.Statement;
 
 public class CreateTable {
 
-    private final String DROP_TABLE = "DROP TABLE IF EXISTS match1;";
-    private final String CREATE_TABLE = "CREATE TABLE match1 (Name VARCHAR(50), Victory INT(11) NOT NULL, Loss INT(11) NOT NULL, Draw INT(11) NOT NULL);";
+    private final String DROP_TABLE = "DROP TABLE IF EXISTS game_match;";
+
+    private final String CREATE_TABLE = "CREATE TABLE game_match (Name VARCHAR(50), Victory INT(11) NOT NULL, Loss INT(11) NOT NULL, Draw INT(11) NOT NULL);";
 
     public void create(Connection connection) throws SQLException {
 
