@@ -5,10 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "game_match_hibernate", catalog = "tictactoe",  uniqueConstraints = {
-        @UniqueConstraint(columnNames = "NAME"),
-        @UniqueConstraint(columnNames = "VICTORY"),
-        @UniqueConstraint(columnNames = "LOSS"),
-        @UniqueConstraint(columnNames = "DRAW") })
+        @UniqueConstraint(columnNames = "NAME")})
 public class Match {
 
     private String name;
