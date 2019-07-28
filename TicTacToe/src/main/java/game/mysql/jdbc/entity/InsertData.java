@@ -14,10 +14,8 @@ public class InsertData {
         this.player = player;
     }
 
+    public void insert(Statement statement) throws SQLException {
 
-    public void insert(Connection connection) throws SQLException {
-
-        Statement statement = connection.createStatement();
         statement.executeUpdate("insert into  game_match (Name, Victory, Loss, Draw) values ('" + player.getName() + "', " + player.getWin() +  ", " + player.getLoss() + ", " + player.getDraw() + ");");
 
     }

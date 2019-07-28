@@ -33,13 +33,13 @@ public class MainJDBC {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection connection = DriverManager.getConnection(url, name, password)) {
 
-                new CreateTable().create(connection);
-
-                new InsertData(playerB1).insert(connection);
-
-                new InsertData(playerB2).insert(connection);
-
                 Statement statement = connection.createStatement();
+
+                new CreateTable().create(statement);
+
+                new InsertData(playerB1).insert(statement);
+
+                new InsertData(playerB2).insert(statement);
 
                 ResultSet resultSet = statement.executeQuery("select * from game_match;");
 

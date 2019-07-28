@@ -10,14 +10,13 @@ public class CreateTable {
 
     private final String CREATE_TABLE = "CREATE TABLE game_match (Name VARCHAR(50), Victory INT(11) NOT NULL, Loss INT(11) NOT NULL, Draw INT(11) NOT NULL);";
 
-    public void create(Connection connection) throws SQLException {
+    public void create(Statement statement) throws SQLException {
 
-        Statement create = connection.createStatement();
-
-        if(create.execute(DROP_TABLE)) {
+        if(statement.execute(DROP_TABLE)) {
             System.out.println("past table destroyed");
         }
 
-        create.execute(CREATE_TABLE);
+        statement.execute(CREATE_TABLE);
+
     }
 }
